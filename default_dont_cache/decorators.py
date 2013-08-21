@@ -7,6 +7,11 @@ def mark_for_caching(func):
     It's similar to ``cache_page`` decorator, but will work with middlewares
     that set headers (e.g. LocaleMiddleWare, SessionMiddleware,
     AuthenticationMiddleware etc.)
+
+    If a response has messages (from the django.contrib.messages) then it will
+    not be cached.
+
+    You must have the ``DefaultDontCacheMiddleware`` middleware
     """
 
     @wraps(func)
